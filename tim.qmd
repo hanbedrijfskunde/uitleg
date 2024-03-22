@@ -1,0 +1,82 @@
+---
+title: "Tim - Uitleg betrouwbaarheid error rates"
+jupyter: envpy39
+---
+
+## Theorie
+
+```{=html}
+<div class="ratio ratio-16x9">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hlM7zdf7zwU?si=5iUfoIWSO2cG8mVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+```
+
+----
+
+```{=html}
+<div class="ratio ratio-16x9">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TqOeMYtOc1w?si=g184YB68w5Zim-Rv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+```
+
+## Voorbeeld
+
+Een student controleert elke dag 800 orders gedurende 10 dagen en noteert daarbij het dagelijkse foutenpercentage. Hier zijn de resultaten:
+
+| Dagnummer | Aantal gecontroleerde orders | Aantal foute orders | Foutpercentage |
+|-----------|------------------------------|---------------------|----------------|
+| 1         | 800                          | 88                  | 11.00%         |
+| 2         | 800                          | 78                  | 9.72%          |
+| 3         | 800                          | 90                  | 11.30%         |
+| 4         | 800                          | 104                 | 13.05%         |
+| 5         | 800                          | 76                  | 9.53%          |
+| 6         | 800                          | 76                  | 9.53%          |
+| 7         | 800                          | 105                 | 13.16%         |
+| 8         | 800                          | 92                  | 11.53%         |
+| 9         | 800                          | 72                  | 9.06%          |
+| 10        | 800                          | 89                  | 11.09%         |
+
+
+Voor een steekproefverhouding is de formule voor het berekenen van een betrouwbaarheidsinterval:
+
+$$ \hat{p} \pm Z \cdot \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} $$
+
+waar:
+- $\hat{p}$ de steekproefverhouding is (het gemiddelde foutenpercentage in dit geval),
+- $Z$ de Z-score is die overeenkomt met het gewenste betrouwbaarheidsniveau (ongeveer 1.96 voor 95% betrouwbaarheid),
+- $n$ het totaal aantal geobserveerde eenheden is (het totaal aantal dagen maal het aantal orders per dag in dit geval).
+
+Omdat we hier met dagelijkse percentages werken, berekenen we eerst de gemiddelde steekproefverhouding over alle dagen. Dan passen we deze formule toe met $n$ als het totale aantal orders over de 10 dagen.
+
+Laten we deze berekening uitvoeren met de gesimuleerde steekproeven.
+
+```{python}
+import numpy as np
+
+# Data for each day
+orders_checked_per_day = 800
+errors_per_day = [88, 78, 90, 104, 76, 76, 105, 92, 72, 89]  # Number of errors observed each day
+
+# Total number of errors and total orders checked
+total_errors = sum(errors_per_day)
+total_orders_checked = orders_checked_per_day * len(errors_per_day)
+
+# Calculate overall sample error rate
+p_hat_overall = total_errors / total_orders_checked
+
+# Calculate standard error for overall error rate
+standard_error_overall = np.sqrt(p_hat_overall * (1 - p_hat_overall) / total_orders_checked)
+
+# Calculate overall confidence interval
+confidence_level_z = 1.96
+margin_of_error_overall = confidence_level_z * standard_error_overall
+lower_bound_overall = p_hat_overall - margin_of_error_overall
+upper_bound_overall = p_hat_overall + margin_of_error_overall
+
+(total_errors, total_orders_checked, lower_bound_overall, upper_bound_overall)
+```
+
+
+Omdat we hier met dagelijkse percentages werken, berekenen we eerst de gemiddelde steekproefverhouding over alle dagen. Het gemiddelde foutpercentage van de steekproef is `{python} round(p_hat_overall * 100, 2)`% en de standaardfout is `{python} round(standard_error_overall * 100, 2)`%.
+
+We passen bovenstaande formule toe met $n$ als het totale aantal orders over de 10 dagen om een betrouwbaarheidsinterval te bereken en vinden we dat het 95% betrouwbaarheidsinterval voor het gemiddelde foutenpercentage over alle dagen ongeveer `{python} round(lower_bound_overall * 100, 2)`% tot `{python} round(upper_bound_overall * 100, 2)`% is. Dit betekent dat we met 95% zekerheid kunnen zeggen dat het werkelijke gemiddelde foutenpercentage over de 10 dagen binnen dit bereik valt.
