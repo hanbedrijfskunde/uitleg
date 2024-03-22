@@ -39,7 +39,13 @@ Voor een steekproefverhouding is de formule voor het berekenen van een betrouwba
 
 $$ \hat{p} \pm Z \cdot \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} $$
 
-waar: - $\hat{p}$ de steekproefverhouding is (het gemiddelde foutenpercentage in dit geval), - $Z$ de Z-score is die overeenkomt met het gewenste betrouwbaarheidsniveau (ongeveer 1.96 voor 95% betrouwbaarheid), - $n$ het totaal aantal geobserveerde eenheden is (het totaal aantal dagen maal het aantal orders per dag in dit geval).
+waar:
+
+- $\hat{p}$ de steekproefverhouding is (het gemiddelde foutenpercentage in dit geval),
+
+- $Z$ de Z-score is die overeenkomt met het gewenste betrouwbaarheidsniveau (ongeveer 1.96 voor 95% betrouwbaarheid),
+
+- $n$ het totaal aantal geobserveerde eenheden is (het totaal aantal dagen maal het aantal orders per dag in dit geval).
 
 Omdat we hier met dagelijkse percentages werken, berekenen we eerst de gemiddelde steekproefverhouding over alle dagen. Dan passen we deze formule toe met $n$ als het totale aantal orders over de 10 dagen.
 
