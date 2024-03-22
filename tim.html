@@ -140,79 +140,79 @@ window.Quarto = {
 <p>Een student controleert elke dag 800 orders gedurende 10 dagen en noteert daarbij het dagelijkse foutenpercentage. Hier zijn de resultaten:</p>
 <table class="table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 38%">
-<col style="width: 26%">
-<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 33%">
+<col style="width: 22%">
+<col style="width: 21%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Dagnummer</th>
-<th>Aantal gecontroleerde orders</th>
-<th>Aantal foute orders</th>
-<th>Foutpercentage</th>
+<th style="text-align: right;">Dagnummer</th>
+<th style="text-align: right;">Aantal gecontroleerde orders</th>
+<th style="text-align: right;">Aantal foute orders</th>
+<th style="text-align: right;">Foutpercentage</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>800</td>
-<td>88</td>
-<td>11.00%</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">11.00%</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>800</td>
-<td>78</td>
-<td>9.72%</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">9.72%</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>800</td>
-<td>90</td>
-<td>11.30%</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">11.30%</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>800</td>
-<td>104</td>
-<td>13.05%</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">13.05%</td>
 </tr>
 <tr class="odd">
-<td>5</td>
-<td>800</td>
-<td>76</td>
-<td>9.53%</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">9.53%</td>
 </tr>
 <tr class="even">
-<td>6</td>
-<td>800</td>
-<td>76</td>
-<td>9.53%</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">9.53%</td>
 </tr>
 <tr class="odd">
-<td>7</td>
-<td>800</td>
-<td>105</td>
-<td>13.16%</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">13.16%</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td>800</td>
-<td>92</td>
-<td>11.53%</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">11.53%</td>
 </tr>
 <tr class="odd">
-<td>9</td>
-<td>800</td>
-<td>72</td>
-<td>9.06%</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">9.06%</td>
 </tr>
 <tr class="even">
-<td>10</td>
-<td>800</td>
-<td>89</td>
-<td>11.09%</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">11.09%</td>
 </tr>
 </tbody>
 </table>
@@ -221,7 +221,7 @@ window.Quarto = {
 <p>waar: - <span class="math inline">\(\hat{p}\)</span> de steekproefverhouding is (het gemiddelde foutenpercentage in dit geval), - <span class="math inline">\(Z\)</span> de Z-score is die overeenkomt met het gewenste betrouwbaarheidsniveau (ongeveer 1.96 voor 95% betrouwbaarheid), - <span class="math inline">\(n\)</span> het totaal aantal geobserveerde eenheden is (het totaal aantal dagen maal het aantal orders per dag in dit geval).</p>
 <p>Omdat we hier met dagelijkse percentages werken, berekenen we eerst de gemiddelde steekproefverhouding over alle dagen. Dan passen we deze formule toe met <span class="math inline">\(n\)</span> als het totale aantal orders over de 10 dagen.</p>
 <p>Laten we deze berekening uitvoeren met de gesimuleerde steekproeven.</p>
-<div id="9bb4b174" class="cell" data-execution_count="1">
+<div id="88008bf4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data for each day</span></span>
@@ -245,7 +245,7 @@ window.Quarto = {
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>upper_bound_overall <span class="op">=</span> p_hat_overall <span class="op">+</span> margin_of_error_overall</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>(total_errors, total_orders_checked, lower_bound_overall, upper_bound_overall)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>(870, 8000, 0.10192778374078482, 0.11557221625921518)</code></pre>
 </div>
 </div>
